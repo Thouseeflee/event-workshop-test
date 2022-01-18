@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+}
+.no-center {
+  text-align: start;
+}
+.borderless-input {
+  background: transparent;
+  border: none;
+  width: 40%;
+}
+.head {
+  padding: 20px 0px;
+}
+.date-time {
+  display: flex;
+  justify-content: center;
+}
+#from,
+#to,
+#date {
+  margin: 0px 10px;
+}
+.event,
+.speakers {
+  margin-top: 90px;
+}
+.speaker {
+  padding: 4px 60px;
+  justify-content: center;
+  align-items: center;
+}
+.cards {
+  border: 1px solid grey;
+  display: flex;
+  margin: 40px;
+  padding: 40px;
+  /* width: 60%; */
+}
+.box {
+  height: 200px;
+  width: 200px;
+  border: 1px solid grey;
+}
