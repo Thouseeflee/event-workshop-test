@@ -1,7 +1,10 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-function Event() {
+function Event({infos, onInfoChange}) {
     const [info, setInfo] = useState('')
+    useEffect(() => {
+       onInfoChange(info)
+    },[info])
     return (
         <div className='event'>
             <h6 className=''>ABOUT THE EVENT</h6>

@@ -21,7 +21,23 @@ const eventSchema = new Schema({
     toTime: {
         type: String,
         required: true
-    }
+    },
+    info: {
+        type: String,
+        required: true
+    },
+    joiningInfo: {
+        type: String,
+    },
+    resource: {
+        type: String,
+    },
+    organise: {
+        type: String,
+    },
+    tag: {
+        type: String,
+    },
 })
 
 module.exports = mongoose.model('Event', eventSchema)

@@ -7,7 +7,6 @@ function Head({head, onHeadChange}) {
     const [fromTime, setFromTime] = useState('')
     const [toTime, setToTime] = useState('')
 
-    console.log();
     const h = { title, link, date, fromTime, toTime}
 
     useEffect(() => {
