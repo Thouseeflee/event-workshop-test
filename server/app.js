@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -5,11 +9,12 @@ const cors = require('cors')
 const Event = require('./models/Event')
 const Speaker = require('./models/Speaker')
 const Moderator = require('./models/Moderator')
+const dbUrl = process.env.DB_URL
 
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect("mongodb://localhost:27017/eventworkshop", { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log("Connected to Mongoose!!");
 })
@@ -25,8 +30,6 @@ app.get('/', async (req,res) => {
 app.post('/post', async(req,res) => {
     const {speakers, moderator} = req.body
     const event = await new Event(req.body)
-    console.log(event._id);
-  if(speakers){
     speakers.map((val => {
         const spk = new Speaker()
         spk.name = val.name
@@ -36,18 +39,18 @@ app.post('/post', async(req,res) => {
         spk.save()
         }
 }))
-  }
-  if(moderator){ 
+
       moderator.map((val => {
           const mod = new Moderator()
           mod.name = val.moderatorName
           mod.about = val.moderatorAbout
           mod.id = event._id
-          if(val.name && val.about){
+          console.log(mod);
+          if(val.moderatorName && val.moderatorName){
+              console.log(mod);
               mod.save()
           }
         }))
-    }
 try {
     await event.save()
     // res.send("from backend",event)
